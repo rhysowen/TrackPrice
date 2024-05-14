@@ -1,7 +1,11 @@
+using TrackPrice.Infrastructure;
+
 namespace TrackPrice.Application;
 
-public class AlertSubscriptionService : IAlertSubscriptionService
+public class AlertSubscriptionService(IEmailService emailService) : IAlertSubscriptionService
 {
+    private readonly IEmailService _emailService = emailService;
+
     public async Task CreateAlertSubscriptionAsync(string email, string productUrl, decimal targetPrice)
     {
         await Task.CompletedTask;
@@ -9,6 +13,6 @@ public class AlertSubscriptionService : IAlertSubscriptionService
 
     public async Task CheckPriceAndSendAlertsAsync()
     {
-        await Task.CompletedTask;
+        await _emailService.SendMailAsync("contact@rhysowen.me");
     }
 }
