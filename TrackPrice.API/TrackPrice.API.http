@@ -1,0 +1,6 @@
+@TrackPrice.API_HostAddress = http://localhost:5202
+
+GET {{TrackPrice.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
